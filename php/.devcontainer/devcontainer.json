@@ -41,7 +41,6 @@
     // 挂载映射
 	"mounts": [
         "source=/path/to/project/.devcontainer/.zshrc,target=/root/.zshrc,type=bind,consistency=cached",
-        "source=/path/to/project/.devcontainer/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
         "source=/path/to/project/.devcontainer/.vimrc,target=/root/.vimrc,type=bind,consistency=cached"
 	],
 

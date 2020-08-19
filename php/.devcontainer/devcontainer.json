@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.106.0/containers/php-7
+{
+	"name": "PHP",
+	"dockerFile": "Dockerfile",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/usr/bin/zsh"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"eamodio.gitlens",
+		"shardulm94.trailing-spaces",
+		"bmewburn.vscode-intelephense-client",
+		"mehedidracula.php-namespace-resolver",
+		"hbenl.vscode-test-explorer",
+		"recca0120.vscode-phpunit",
+		"kokororin.vscode-phpfmt",
+		"neilbrayfield.php-docblocker"
+	],
+
+	"remote.containers.defaultExtensions": [
+		"mutantdino.resourcemonitor"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "php -v",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+
+	// 项目目录
+	"workspaceMount": "source=/path/to/project,target=/workspace/project,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace/project",
+
+    // 挂载映射
+	"mounts": [
+        "source=/path/to/project/.devcontainer/.zshrc,target=/root/.zshrc,type=bind,consistency=cached",
+        "source=/path/to/project/.devcontainer/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+        "source=/path/to/project/.devcontainer/.vimrc,target=/root/.vimrc,type=bind,consistency=cached"
+	],
+
+	// 环境变量
+    "containerEnv": {
+        "TZ": "Asia/Shanghai"
+	},
+
+	"postCreateCommand": "composer install && php artisan ide-helper:meta && php artisan ide-helper:generate"
+}
